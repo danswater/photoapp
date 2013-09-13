@@ -1,0 +1,24 @@
+<!DOCTYPE html />
+<html>
+	<head>
+		<title><%= title %></title>
+		<link rel='stylesheet' href='/stylesheets/style.css' />
+	</head>
+	<body>
+    <h1><%= title %></h1>
+		<nav>
+			<ul id="nav">
+				<li><p><a href='/'>Home</a></p></li>
+				<li><p><a href='/upload'>Upload Photo</a></p></li>
+				<li><p><a href='/logout'>Log Out</a></p></li>
+			</ul>
+		<div style="clear:both"></div>
+		</nav>
+		<p>Upload a photo to your account below.</p>
+		<form method='post' enctype='multipart/form-data'>
+			<p><input type='text' name='photo[name]' placeholder='Name' required="required" /></p>
+			<p><input type='file' name='photo[image]' /></p>
+			<p><input type='submit' value='Upload' /></p>
+		</form>
+	</body>
+</html>

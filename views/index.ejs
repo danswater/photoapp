@@ -1,0 +1,39 @@
+<!DOCTYPE html />
+<html>
+	<head>
+		<title><%= title %></title>
+		<link rel='stylesheet' href='/stylesheets/style.css' />
+	</head>
+	<body>
+    <h1><%= title %></h1>
+	<% if (!user) { %>
+		<h2>Welcome! Please log in.</h2>
+		<p><a href='/login'>Log In</a></p>
+	<% } else { %>
+		<nav>
+			<ul id="nav">
+				<li><p>Hello, <%= user.username %>.</p></li>
+				<li><p><a href='/'>Home</a></p></li>
+				<li><p><a href='/upload'>Upload Photo</a></p></li>
+				<li><p><a href='/logout'>Log Out</a></p></li>
+			</ul>
+		<div style="clear:both"></div>
+		</nav>
+        <h3>Recently Uploaded Images</h3>
+		<div id='photos'>
+			<% photos.forEach(function(photo) { %>
+               <div class='photo'>
+					<form action="/delete" method="post">
+		                <input type="hidden" name="_method" value="delete" />
+		                <input type="hidden" name="id" value="<%= photo.id %>" />
+		                <input type="submit" name="submit" value="x" />
+					</form>
+               		<h2><%= photo.name %></h2>
+               		<a href='/photo/<%= photo.id %>/download'> <img src='/photos/<%= photo.path %>' />
+               		</a>
+               </div>
+		    <% }) %>
+		</div>
+	<% } %>
+	</body>
+</html>
